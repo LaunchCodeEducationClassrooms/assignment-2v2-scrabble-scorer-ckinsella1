@@ -29,7 +29,7 @@ function oldScrabbleScorer(word) {
 
 let simpleScore = function(word) {
   word = word.toUpperCase();
-  let letterPoints = "";
+  let letterPoints = 0
   for (let i = 0; i < word.length; i++){
     letterPoints++
 }   
