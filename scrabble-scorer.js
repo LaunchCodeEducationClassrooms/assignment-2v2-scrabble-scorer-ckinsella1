@@ -38,7 +38,7 @@ let simpleScore = function(word) {
 
 let vowelBonusScore = function(word) {
   word = word.toUpperCase();
-  let letterPoints= "";
+  let letterPoints= 0;
   let vowels = ['A', 'E', 'I', 'O', 'U']
     for (let i = 0; i < word.length; i++){
     if (vowels.includes(word[i])){
