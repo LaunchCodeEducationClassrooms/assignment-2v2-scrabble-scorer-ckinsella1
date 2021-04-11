@@ -67,7 +67,7 @@ return scorer;
 
 function transform() {};
 
-let newPointStructure = transform(oldScrabbleScorer)
+let newPointStructure = transform(oldPointStructure)
 
 
 
