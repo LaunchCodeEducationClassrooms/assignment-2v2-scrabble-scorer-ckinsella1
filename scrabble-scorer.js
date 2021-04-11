@@ -53,7 +53,7 @@ let vowelBonusScore = function(word) {
 let scrabbleScore;
 
 const scoringAlgorithms = 
-[  ];
+[ Object({name: 'simple', description: 'Simple Score', scorerFunction: Function, scoringFunction: Function}), Object({name: 'vowel', description: 'Bonus-vowels', scorerFunction: Function, scoringFunction: Function}), Object({name: 'scrabble', description: 'Scrabble', scorerFunction: Function, scoringFunction: Function})];
 
 function initialPrompt() {
   let word = input.question("Let's play some scrabble! Enter a word: ");
