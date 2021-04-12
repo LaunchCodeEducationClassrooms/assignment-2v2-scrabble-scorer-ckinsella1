@@ -50,10 +50,10 @@ let vowelBonusScore = function(word) {
   return letterPoints;
 }
 
-let scrabbleScore;
+
 
 const scoringAlgorithms = 
-[ Object({name: 'simple', description: 'Simple Score', scorerFunction: Function, scoringFunction: Function}), Object({name: 'vowel', description: 'Bonus-vowels', scorerFunction: Function, scoringFunction: Function}), Object({name: 'scrabble', description: 'Scrabble', scorerFunction: Function, scoringFunction: Function})];
+[ Object({name: 'simple', description: 'Simple Score', scorerFunction: oldScrabbleScorer}), Object({name: 'vowel', description: 'Bonus-vowels', scorerFunction: simpleScore}), Object({name: 'scrabble', description: 'Scrabble', scorerFunction: vowelBonusScore})];
 
 function initialPrompt() {
   let word = input.question("Let's play some scrabble! Enter a word: ");
@@ -65,10 +65,26 @@ function scorerPrompt() {
 return scorer; 
 }
 
-function transform() {};
+function transform(oldPointStructure) {
+  for (item in oldPointStructure) {
+
+  }
+};
 
 let newPointStructure = transform(oldPointStructure)
 
+let scrabbleScore = function(word) { 	
+  word = word.toLowerCase();
+	let letterPoints = "";
+	for (let i = 0; i < word.length; i++) {
+	  for (const pointValue in newPointStructure) {
+		 if (newPointStructure[pointValue].includes(word[i])) {
+			letterPoints += `Points for '${word[i]}': ${pointValue}\n`
+		 }
+	  }
+	}
+	return letterPoints;
+ };
 
 
 function runProgram() {
