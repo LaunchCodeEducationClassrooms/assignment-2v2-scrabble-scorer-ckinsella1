@@ -55,7 +55,7 @@ function transform(oldPointStructure) {
   for (item in oldPointStructure) {
     let letterList = oldPointStructure[item]
     for (let i = 0; i < letterList.length; i++) {
-      let letter = oldPointStructure[item][i]
+      let letter = oldPointStructure[item][i].toLowerCase(); 
       newObject[letter] = parseInt(item)
         }
   }
@@ -65,7 +65,7 @@ function transform(oldPointStructure) {
 let newPointStructure = transform(oldPointStructure)
 
 let scrabbleScore = function(word) { 	
-  word = word.toUpperCase();
+  word = word.toLowerCase();
 	let letterPoints = 0;
 	for (let i = 0; i < word.length; i++) {
     let letter = word[i] 
@@ -77,6 +77,8 @@ let scrabbleScore = function(word) {
 
 const scoringAlgorithms = 
 [ Object({name: 'simple', description: 'Simple Score', scorerFunction: simpleScore}), Object({name: 'vowel', description: 'Bonus-vowels', scorerFunction: vowelBonusScore}), Object({name: 'scrabble', description: 'Scrabble', scorerFunction: scrabbleScore})];
+
+
 
 function initialPrompt() {
   let word = input.question("Let's play some scrabble! Enter a word: ");
