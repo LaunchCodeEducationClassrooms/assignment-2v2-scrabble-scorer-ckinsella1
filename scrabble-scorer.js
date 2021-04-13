@@ -50,10 +50,33 @@ let vowelBonusScore = function(word) {
   return letterPoints;
 }
 
+function transform(oldPointStructure) {
+  let newObject = {}
+  for (item in oldPointStructure) {
+    let letterList = oldPointStructure[item]
+    for (let i = 0; i < letterList.length; i++) {
+      let letter = oldPointStructure[item][i]
+      newObject[letter] = parseInt(item)
+        }
+  }
+  return newObject;
+};
 
+let newPointStructure = transform(oldPointStructure)
+
+let scrabbleScore = function(word) { 	
+  word = word.toUpperCase();
+	let letterPoints = 0;
+	for (let i = 0; i < word.length; i++) {
+    let letter = word[i] 
+    let score = newPointStructure[letter] 
+    letterPoints += parseInt(score)
+	}
+	return letterPoints;
+ };
 
 const scoringAlgorithms = 
-[ Object({name: 'simple', description: 'Simple Score', scorerFunction: oldScrabbleScorer}), Object({name: 'vowel', description: 'Bonus-vowels', scorerFunction: simpleScore}), Object({name: 'scrabble', description: 'Scrabble', scorerFunction: vowelBonusScore})];
+[ Object({name: 'simple', description: 'Simple Score', scorerFunction: simpleScore}), Object({name: 'vowel', description: 'Bonus-vowels', scorerFunction: vowelBonusScore}), Object({name: 'scrabble', description: 'Scrabble', scorerFunction: scrabbleScore})];
 
 function initialPrompt() {
   let word = input.question("Let's play some scrabble! Enter a word: ");
@@ -65,31 +88,16 @@ function scorerPrompt() {
 return scorer; 
 }
 
-function transform(oldPointStructure) {
-  for (item in oldPointStructure) {
 
-  }
-};
 
-let newPointStructure = transform(oldPointStructure)
 
-let scrabbleScore = function(word) { 	
-  word = word.toLowerCase();
-	let letterPoints = "";
-	for (let i = 0; i < word.length; i++) {
-	  for (const pointValue in newPointStructure) {
-		 if (newPointStructure[pointValue].includes(word[i])) {
-			letterPoints += `Points for '${word[i]}': ${pointValue}\n`
-		 }
-	  }
-	}
-	return letterPoints;
- };
 
 
 function runProgram() {
-   initialPrompt();
-   scorerPrompt(); 
+   let word =  initialPrompt();
+   let scoreMethod = scorerPrompt(); 
+   let score =  scoringAlgorithms[scoreMethod].scorerFunction(word)
+   console.log(`Score for ${word}:`, score)
 }
 
 // Don't write any code below this line //
