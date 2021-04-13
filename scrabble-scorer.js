@@ -76,7 +76,7 @@ function scrabbleScore(word) {
  };
 
 const scoringAlgorithms = 
-[ Object({name: 'simple', description: 'Simple Score', scorerFunction: simpleScore}), Object({name: 'vowel', description: 'Bonus-vowels', scorerFunction: vowelBonusScore}), Object({name: 'scrabble', description: 'Scrabble', scorerFunction: scrabbleScore})];
+[ Object({name: 'simple', description: 'Simple Score', scorerFunction: simpleScore, scoringFunction: Function}), Object({name: 'vowel', description: 'Bonus-vowels', scorerFunction: vowelBonusScore, scoringFunction: Function}), Object({name: 'scrabble', description: 'Scrabble', scorerFunction: scrabbleScore, scoringFunction: Function})];
 
 
 
