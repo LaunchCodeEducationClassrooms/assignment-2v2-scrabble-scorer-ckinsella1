@@ -27,7 +27,7 @@ function oldScrabbleScorer(word) {
 	return letterPoints;
  }
 
-let simpleScore = function(word) {
+function simpleScore(word) {
   word = word.toUpperCase();
   let letterPoints = 0
   for (let i = 0; i < word.length; i++){
@@ -36,7 +36,7 @@ let simpleScore = function(word) {
   return letterPoints;
 }
 
-let vowelBonusScore = function(word) {
+function vowelBonusScore(word) {
   word = word.toUpperCase();
   let letterPoints= 0;
   let vowels = ['A', 'E', 'I', 'O', 'U']
@@ -64,7 +64,7 @@ function transform(oldPointStructure) {
 
 let newPointStructure = transform(oldPointStructure)
 
-let scrabbleScore = function(word) { 	
+function scrabbleScore(word) { 	
   word = word.toLowerCase();
 	let letterPoints = 0;
 	for (let i = 0; i < word.length; i++) {
